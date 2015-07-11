@@ -8,11 +8,11 @@ var UserSchema = new mongoose.Schema({
 	email: String,
 	password: String,
 	outside_land_username: String,
-	artist_list: {
+	artist_list: [{
 		artist_name: String,
-		songs_heard: type: String,
-		times_heard: [{ type: Date, default: Date.now }]
-	}
+		songs_heard: [{ name: String, time_heard: { type: Date, default: Date.now }}],
+	}],
+	created: { type: Date, default: Date.now };
 })
 
 var User = mongoose.model('User', UserSchema);
