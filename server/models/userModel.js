@@ -10,7 +10,7 @@ var UserSchema = new mongoose.Schema({
 	outside_land_username: String,
 	artist_list: [{
 		artist_name: String,
-		songs_heard: [{ name: String, time_heard: { type: Date, default: Date.now }}],
+		songs_heard: [{ name: String, time_heard: { type: Date, default: Date.now }, like: Boolean}],
 	}],
 	created: { type: Date, default: Date.now };
 })
