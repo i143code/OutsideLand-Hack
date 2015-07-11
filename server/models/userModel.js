@@ -12,7 +12,7 @@ var UserSchema = new mongoose.Schema({
 		artist_name: String,
 		songs_heard: [{ name: String, time_heard: { type: Date, default: Date.now }}],
 	}],
-	created: { type: Date, default: Date.now };
+	created: { type: Date, default: Date.now }
 })
 
 var User = mongoose.model('User', UserSchema);

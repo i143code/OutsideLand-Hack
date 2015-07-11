@@ -9,7 +9,7 @@ module.exports = function(app) {
 		ConcertController.retrieveArtists(req, res);
 	});
 
-	app.get('/concerts/:concertname/performances/show'), function(req, res){
+	app.get('/concerts/:concertname/performances/show', function(req, res){
 		ConcertController.retrievePerformances(req, res);
 	});
 
