@@ -81,6 +81,10 @@ discoverlands.factory('userFactory', function($http){
 			})
 	}
 
+	factory.logout = function(){
+		$http.get('/logout')
+	}
+
 	return factory;
 
 })

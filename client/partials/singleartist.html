@@ -1,6 +1,6 @@
  	  <nav>
 	    <div class="nav-wrapper purple darken-4">
-	      <a href="#" class="brand-logo"><img src='images/logo.png' /> Discover Music</a>
+	      <a href="d" class="brand-logo"><img src='images/logo.png' /> DiscoverLineup</a>
 	      <ul id="nav-mobile" class="right hide-on-med-and-down">
 	        <li><a href="collapsible.html">Log Out</a></li>
 	      </ul>
@@ -32,15 +32,16 @@
       <div class="col s12">
         <div class="card-panel white">
           <img src='{{gracenote[0].artist_image_url}}' />
+          <br />
+          <a href="{{gracenote[0].artist_bio_url}}">Artist Bio</a>
         	<h3>{{gracenote[0].album_artist_name}}</h3>
           <h4>{{gracenote[0].album_title}}</h4>
-          <h4>{{gracenote[0].album_year}}</h4>
-          <a href="{{gracenote[0].artist_bio_url}}">Artist Bio</a>
+          <h5>Year: {{gracenote[0].album_year}}</h5>
+          <h4>Track List</h4>
             <ul>
-              <li ng-repeat='track in gracenote[0].tracks' ng-bind='track.track_title'></li>
+              <li ng-repeat='track in gracenote[0].tracks'>-{{track.track_title}}<br /></li>
             </ul>
-        	<a class="btn-floating btn-large waves-effect waves-light red right" ng-click='likeArtist(singleArtist.artist)'><i class="material-icons">thumb_up</i></a><span class='right likeCount'>{{singleArtist.likes}}</span>
-        	<br />
+        	
           
         </div>
       </div>

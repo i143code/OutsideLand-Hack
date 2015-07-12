@@ -159,11 +159,11 @@ discoverlands.controller('userCtrl', function($routeParams, $scope, userFactory,
 		console.log($scope.usersWhoLike);
 	})
 
-	$scope.sendArtistMessage = function(){
-		console.log($scope.newArtistMessage);
-		socket.emit('new_artist_message', {artist: $scope.artist.name, message: $scope.newArtistMessage});
-		$scope.newArtistMessage = '';
-	}
+	// $scope.sendArtistMessage = function(){
+	// 	console.log($scope.newArtistMessage);
+	// 	socket.emit('new_artist_message', {artist: $scope.artist.name, message: $scope.newArtistMessage});
+	// 	$scope.newArtistMessage = '';
+	// }
 
 	socket.on('artist_message', function(data){
 		console.log(data)
@@ -180,6 +180,9 @@ discoverlands.controller('userCtrl', function($routeParams, $scope, userFactory,
 		})
 	// }
 
+	$scope.logout = function() {
+		userFactory.logout()
+	}
 
 
 })

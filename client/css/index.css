@@ -1,8 +1,16 @@
 #lineup{
   margin-left: 800px;
-
-
 }
+
+#dropdown1 .btn .a .b .c {
+  position: absolute !important;
+  left: 200px;
+}
+
+/*.btn {
+  position: absolute;
+  left: 200px;
+}*/
 
 .page-footer {
   opacity: 0.9;

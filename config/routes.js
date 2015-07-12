@@ -86,6 +86,10 @@ module.exports = function(app) {
 		});
 	});
 
+	app.get('/logout', function(req, res){
+		res.session.destroy();
+	})
+
 	// Login
 
 	app.get('/auth/facebook', passport.authenticate('facebook'));
