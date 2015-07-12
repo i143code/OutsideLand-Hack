@@ -141,6 +141,7 @@ discoverlands.controller('userCtrl', function($routeParams, $scope, userFactory,
 	$scope.sendArtistMessage = function(){
 		console.log($scope.newArtistMessage);
 		socket.emit('new_artist_message', {artist: $scope.artist.name, message: $scope.newArtistMessage});
+		$scope.newArtistMessage = '';
 	}
 
 	socket.on('artist_message', function(data){
