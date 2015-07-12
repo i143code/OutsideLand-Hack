@@ -47,6 +47,10 @@ discoverlands.controller('userCtrl', function($routeParams, $scope, userFactory,
 		})
 	}
 
+	userFactory.setUser($routeParams.id);
+
+	$scope.user = $routeParams.id;
+
 	userFactory.getUser(function(retrievedUser){
 		$scope.user = retrievedUser;
 	})

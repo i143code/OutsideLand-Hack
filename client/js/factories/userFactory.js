@@ -49,6 +49,7 @@ discoverlands.factory('userFactory', function($http){
 
 	factory.setUser = function(userToSet){
 		var user = userToSet;
+		console.log(user);
 	}
 
 	factory.getUser = function(callback){

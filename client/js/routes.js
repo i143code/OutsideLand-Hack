@@ -1,6 +1,6 @@
 discoverlands.config(function($routeProvider){
 	$routeProvider
-		.when('/partial1', {
+		.when('/users/:id', {
 			templateUrl: 'partials/partial1.html'
 		})
 		.otherwise({

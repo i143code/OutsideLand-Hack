@@ -16,20 +16,19 @@ passport.use(new FacebookStrategy({
 	clientID: '1673236122905259',
 	clientSecret: '0540bcd3ad076073b99f9fee1c679703',
 	callbackURL: 'http://localhost:8000/auth/facebook/callback'
-},
-function(accessToken, refreshToken, profile, done){
-	console.log('accessToken: ', accessToken);
-	console.log('refreshToken: ', refreshToken);
-	console.log('done: ', done);
-	console.log('profile: ', profile);
-	process.nextTick(function() {
-		return done(null, profile);
-	});
-}
+	},
+	function(accessToken, refreshToken, profile, done){
+
+		UserController.createOrLoginFacebookUser(profile.displayName, profile.id);
+
+		process.nextTick(function() {
+			return done(null, profile);
+		});
+	}
 
 ))
 
-
+console.log(passport.session);
 
 module.exports = function(app) {
 	
@@ -37,7 +36,11 @@ module.exports = function(app) {
 
 	app.get('/auth/facebook', passport.authenticate('facebook'));
 
-	app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/#/success', failureRedirect: '/#/failure'}))
+	app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/success', failureRedirect: '/#/failure'}))
+
+	app.get('/success', function(req,res){
+		res.redirect('/#/user/'+req.session.passport.user.id);
+	})
 
 	// Concert-specfic routes
 	app.get('/concerts/:concertname/artists/show', function(req, res){

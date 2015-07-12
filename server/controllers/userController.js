@@ -129,5 +129,33 @@ module.exports = {
 				})
 			}
 		})
+	},
+	createOrLoginFacebookUser: function(displayName, id) {
+		User.findOne({facebook_id: id}, function(err, user){
+			if (err) {
+				console.log('Error logging in user', err);
+				return false
+			} else {
+				if (user === null) {
+					if (displayName.indexOf(' ') > 0) {
+						var first_name = displayName.slice(0, displayName.indexOf(' '));
+						var last_name = displayName.slice(displayName.indexOf(' '), displayName.length);
+						var newUser = new User({first_name: first_name, last_name: last_name, facebook_id: id});
+					} else {
+						var newUser = new User({first_name: user.displayName, facebook_id: id});
+					}
+					newUser.save(function(err, user){
+						if (err) {
+							console.log('Error creating new user', err);
+						} else {
+							return user;
+						}
+					})
+				} else {
+					return user;
+				}
+			}
+		})
+		
 	}
 }
