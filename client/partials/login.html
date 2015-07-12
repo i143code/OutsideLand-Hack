@@ -60,17 +60,17 @@ pauseButton.addEventListener("click", function() {
 
 
 
-  <div id="modal1" class="modal modal-fixed-footer">
+  <div id="modal1" class="modal modal-fixed-footer" ng-controller='userCtrl'>
     <div class="modal-content">
       <div class="row">
     <form class="col s12">
       <div class="row">
         <div class="input-field col s6">
-          <input id="first_name" type="text" class="validate">
+          <input id="first_name" type="text" class="validate" ng-model='newUser.first_name'>
           <label for="first_name">First Name</label>
         </div>
         <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate">
+          <input id="last_name" type="text" class="validate" ng-model='newUser.last_name'>
           <label for="last_name">Last Name</label>
         </div>
       </div>
@@ -78,13 +78,13 @@ pauseButton.addEventListener("click", function() {
       </div>
       <div class="row">
         <div class="input-field col s6">
-          <input id="email" type="email" class="validate">
+          <input id="email" type="email" class="validate" ng-model='newUser.email'>
           <label for="email">Email</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
-          <input id="password" type="password" class="validate">
+          <input id="password" type="password" class="validate" ng-model='newUser.password'>
           <label for="password">Password</label>
         </div>
       </div>
@@ -94,7 +94,7 @@ pauseButton.addEventListener("click", function() {
           <label for="confirm password">Confirm Password</label>
         </div>
       </div>
-       <a class="waves-effect waves-light btn">Sign Up</a>
+       <button class="waves-effect waves-light btn" ng-click=''>Sign Up</button>
     </form>
   </div>
     </div>
