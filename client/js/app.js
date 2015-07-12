@@ -1,1 +1,1 @@
-var discoverlands = angular.module('discoverlands', ['ngRoutes']);
+var discoverlands = angular.module('discoverlands', ['ngRoute']);
