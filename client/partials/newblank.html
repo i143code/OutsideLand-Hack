@@ -9,7 +9,7 @@
 	    </div>
 	  </nav>
 
-<div class='container main-body'>
+<div class='container main-body' ng-controller='userCtrl'>
 	<div class='col s12'>
 		<div class='main-top'>
 				<a class="waves-effect waves-light btn-large blue darken-3" href="#/day/:id">Fri.</a> <a class="waves-effect waves-light btn-large blue darken-3" href="#/day/:id">Sat.</a> <a class="waves-effect waves-light btn-large blue darken-3" href="#/day/:id">Sun.</a>
@@ -19,6 +19,38 @@
 	<div class="row">
       <div class="col s12">
         <div class="card-panel white">
+        	<h3>{{artists.performances[0].artist}}</h3>
+        	<a class="btn-floating btn-large waves-effect waves-light red right" ng-click='concertArtistLike(artists.name, artists.performances[0].artist)'><i class="material-icons">add</i></a><span class='right likeCount'>{{artists.performances[0].likes}}</span>
+        	<img src='http://www.webtechelp.net/wp-content/uploads/2014/05/YouTube-Player-PSD-Download.png' />
+        	<br />
+          <span>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+        <div class="card-panel white">
+        	<h3>{{artists.performances[1].artist}}</h3>
+        	<a class="btn-floating btn-large waves-effect waves-light red right" ng-click='concertArtistLike(artists.name, artists.performances[1].artist)'><i class="material-icons">add</i></a><span class='right likeCount'>{{artists.performances[1].likes}}</span>
+        	<img src='http://www.webtechelp.net/wp-content/uploads/2014/05/YouTube-Player-PSD-Download.png' />
+        	<br />
+          <span>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+        <div class="card-panel white">
+        	<h3>{{artists.performances[2].artist}}</h3>
+        	<a class="btn-floating btn-large waves-effect waves-light red right" ng-click='concertArtistLike(artists.name, artists.performances[2].artist)'><i class="material-icons">add</i></a><span class='right likeCount'>{{artists.performances[1].likes}}</span>
+        	<img src='http://www.webtechelp.net/wp-content/uploads/2014/05/YouTube-Player-PSD-Download.png' />
+        	<br />
           <span>I am a very simple card. I am good at containing small bits of information.
           I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
           </span>

@@ -6,8 +6,8 @@ var UserSchema = new mongoose.Schema({
 	first_name: String,
 	last_name: String,
 	facebook_id: String,
-	// email: String,
-	// password: String,
+	email: String,
+	password: String,
 	// outside_land_username: String,
 	artists_liked: [{ type: Schema.Types.ObjectId, ref: 'Artist' }],
 	artist_list: [{
