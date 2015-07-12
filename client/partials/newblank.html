@@ -1,28 +1,14 @@
  	  <nav>
 	    <div class="nav-wrapper blue darken-4">
-	      <a href="#" class="brand-logo"> DiscoveryLands</a>
+	      <a href="#" class="brand-logo">Logo</a>
 	      <ul id="nav-mobile" class="right hide-on-med-and-down">
-	        <li><a href="badges.html">All Performances</a></li>
-	        <li><a href="collapsible.html">Log Out</a></li>
+	        <li><a href="sass.html">Sass</a></li>
+	        <li><a href="badges.html">Components</a></li>
+	        <li><a href="collapsible.html">JavaScript</a></li>
 	      </ul>
 	    </div>
 	  </nav>
 
-<div class="row" ng-hide='showWeather' ng-controller='userCtrl'>
-      <div class="col s12 m5">
-        <div class="card-panel blue lighten-2">
-          <h5 class='white-text'>Weather Forecast</h5>
-          <span class="white-text">
-            <ul>
-              <li>Cloud Coverage: {{weatherData.trip.cloud_cover.cond}}<br /></li>
-              <li>Temp: {{weatherData.trip.temp_high.avg.F}} degrees F<br /></li>
-              <li>Chance of Rain: {{weatherData.trip.chance_of.chanceofrainday.percentage}}%<br /></li>
-            </ul>
-          </span>
-          <button class="waves-effect waves-light btn blue" ng-click='dismissWeather()'>Okay</button>
-        </div>
-      </div>
-    </div>
 
 <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
     <a class="btn-floating btn-large red">
@@ -40,18 +26,43 @@
 <div class='container main-body' ng-controller='userCtrl'>
 	<div class='col s12'>
 		<div class='main-top'>
-				<button class="waves-effect waves-light btn-large blue darken-3" ng-click='changeDay(1)'>Fri.</button> <button class="waves-effect waves-light btn-large blue darken-3" ng-click='changeDay(2)'>Sat.</button> <a class="waves-effect waves-light btn-large blue darken-3" ng-click='changeDay(3)'>Sun.</a>
-				<button ng-show='allShown' class="waves-effect waves-light btn-large blue darken-3 right" ng-click='allOrMine("mine")'>My List</button>
-        <button ng-hide='allShown' class="waves-effect waves-light btn-large blue darken-3 right" ng-click='allOrMine("all")'>All Performers</button>
-
-     
+				<a class="waves-effect waves-light btn-large blue darken-3" href="#/day/:id">Fri.</a> <a class="waves-effect waves-light btn-large blue darken-3" href="#/day/:id">Sat.</a> <a class="waves-effect waves-light btn-large blue darken-3" href="#/day/:id">Sun.</a>
+				<a class="waves-effect waves-light btn-large blue darken-3 right" href="#/day/:id">My List</a>
 		</div>
 	</div>
-	<div class="row" ng-repeat='performance in artists.performances | filter: day_filter'>
+	<div class="row">
       <div class="col s12">
         <div class="card-panel white">
-        	<h3>{{performance.artist}}</h3>
-        	<a class="btn-floating btn-large waves-effect waves-light red right" ng-click='likeArtist(performance.artist)'><i class="material-icons">thumb_up</i></a><span class='right likeCount'>{{performance.likes}}</span>
+        	<h3>{{artists.performances[3].artist}}</h3>
+        	<a class="btn-floating btn-large waves-effect waves-light red right" ng-click='likeArtist(artists.performances[3].artist)'><i class="material-icons">thumb_up</i></a><span class='right likeCount'>{{artists.performances[3].likes}}</span>
+        	<img src='http://www.webtechelp.net/wp-content/uploads/2014/05/YouTube-Player-PSD-Download.png' />
+        	<br />
+          <span>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+        <div class="card-panel white">
+        	<h3>{{artists.performances[4].artist}}</h3>
+        	<a class="btn-floating btn-large waves-effect waves-light red right" ng-click='likeArtist(artists.performances[4].artist)'><i class="material-icons">thumb_up</i></a><span class='right likeCount'>{{artists.performances[4].likes}}</span>
+        	<img src='http://www.webtechelp.net/wp-content/uploads/2014/05/YouTube-Player-PSD-Download.png' />
+        	<br />
+          <span>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+        <div class="card-panel white">
+        	<h3>{{artists.performances[5].artist}}</h3>
+        	<a class="btn-floating btn-large waves-effect waves-light red right" ng-click='likeArtist(artists.performances[5].artist)'><i class="material-icons">thumb_up</i></a><span class='right likeCount'>{{artists.performances[5].likes}}</span>
         	<img src='http://www.webtechelp.net/wp-content/uploads/2014/05/YouTube-Player-PSD-Download.png' />
         	<br />
           <span>I am a very simple card. I am good at containing small bits of information.
