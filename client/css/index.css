@@ -2,8 +2,14 @@
   margin-left: 800px;
 
 
-
 }
+
+#modal1 {
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+}
+
+
 ul
 {
 list-style-type: none;

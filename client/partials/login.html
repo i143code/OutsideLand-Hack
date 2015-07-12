@@ -1,3 +1,14 @@
+
+
+<script>
+
+$(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
+
+</script>
+
 <script type="text/javascript">
 var vid = document.getElementById("bgvid");
 var pauseButton = document.querySelector("#polina button");
@@ -27,8 +38,9 @@ pauseButton.addEventListener("click", function() {
 })
 
 
-
 </script>
+
+
 
 
 
@@ -39,14 +51,22 @@ pauseButton.addEventListener("click", function() {
 </video>
 <div id="polina">
 <h1>Discover Artists</h1>
-<p>filmed by Alexander Wagner 2011
-<p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur porta dictum turpis, eu mollis justo gravida ac. Proin non eros blandit, rutrum est a, cursus quam. Nam ultricies, velit ac suscipit vehicula, turpis eros sollicitudin lacus, at convallis mauris magna non justo. Etiam et suscipit elit. Morbi eu ornare nulla, sit amet ornare est. Sed vehicula ipsum a mattis dapibus. Etiam volutpat vel enim at auctor.</p>
-<p>Aenean pharetra convallis pellentesque. Vestibulum et metus lectus. Nunc consectetur, ipsum in viverra eleifend, erat erat ultricies felis, at ultricies mi massa eu ligula. Suspendisse in justo dapibus metus sollicitudin ultrices id sed nisl.</p>
-<a href=""><img src="images/facebooklog.png"height="44" width="150"></a>
+
+<p>Discover new artists, connect with friends, enhance your concert experience</p>
+
+<a class="modal-trigger waves-effect waves-light btn" href='#modal1'>Sign In</a>
+<a href="/auth/facebook" class="waves-effect waves-light btn blue darken-3">Sign Up With Facebook</a>
 </div>
 
 
 
-
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Login</h4>
+      <p>Please complete the form below to register with DiscoverLands</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+    </div>
+  </div>
 
