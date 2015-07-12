@@ -60,6 +60,13 @@ discoverlands.factory('userFactory', function($http){
 			})
 	}
 
+	factory.getWeather = function(callback){
+		$http.get('http://api.wunderground.com/api/457d5ff73e181fde/planner_08070809/q/CA/San_Francisco.json')
+			.success(function(weatherData){
+				callback(weatherData)
+			})
+	}
+
 	return factory;
 
 })

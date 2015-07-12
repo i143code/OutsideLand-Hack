@@ -8,6 +8,7 @@ module.exports = {
 			if (err) {
 				console.log('Error retrieving artists');
 			} else {
+				console.log(concert);
 				res.json(concert);
 			}
 		})

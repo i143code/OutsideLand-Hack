@@ -1,7 +1,7 @@
 discoverlands.config(function($routeProvider){
 	$routeProvider
-		.when('/users/:id', {
-			templateUrl: 'partials/partial1.html'
+		.when('/user/:id', {
+			templateUrl: 'partials/newblank.html'
 		})
 		.when('/login', {
 			templateUrl: 'partials/login.html'
