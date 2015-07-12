@@ -77,7 +77,7 @@ module.exports = {
 						artist.songs_heard.push({song: req.body.song, _user: user._id});
 						for (var i = 0; i < user.artist_list.length; i++) {
 							if (user.artist_list[i].artist_name === artist.name) {
-								for (var j = 0; i < user.artist_list[i].songs_heard.length) {
+								for (var j = 0; i < user.artist_list[i].songs_heard.length; j++) {
 									if (user.artist_list[i].songs_heard[j].name === req.body.song) {
 										search.found = true;
 									}

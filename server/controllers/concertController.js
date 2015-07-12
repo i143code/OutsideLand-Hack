@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var Concert = mongoose.model('concert');
+var Concert = mongoose.model('Concert');
 
 module.exports = {
 	retrieveArtists: function(req, res){
