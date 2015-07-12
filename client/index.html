@@ -26,17 +26,13 @@
 	<!-- <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script> -->
 
 <!-- ADDITIONAL SCRIPTS -->
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-	<script src='./js/youtubePlayer.js'></script>
-
-    <script type="text/javascript" src="https://apis.google.com/js/client.js?onload=init"></script>
-
+	
 </head>
 	<nav>
 		<h1>DiscoverArtists</h1>
 		<ul>
-			<li><a href="#/partial1">Partial1</a></li>
+			<li><a href="#/artists">Artists</a></li>
+			<li><a href="#/mylist">My List</a></li>
 		</ul>
 	</nav>
 </head>
@@ -44,10 +40,6 @@
 	<div ng-controller='concertCtrl'>
 
 		<div class='container'>
-			
-			<div id="youtubeSearchResults"></div>
-		    <div id="player"></div>
-
 			<div ng-view=''></div>
 		</div>
 

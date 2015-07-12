@@ -1,7 +1,13 @@
 discoverlands.config(function($routeProvider){
 	$routeProvider
-		.when('/partial1', {
-			templateUrl: 'partials/partial1.html'
+		.when('/', {
+			templateUrl: 'partials/artists.html'
+		})
+		.when('/artists', {
+			templateUrl: 'partials/artists.html'
+		})
+		.when('/mylist', {
+			templateUrl: 'partials/mylist.html'
 		})
 		.otherwise({
 			redirectTo: '/'
