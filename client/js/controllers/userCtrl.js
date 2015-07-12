@@ -1,4 +1,4 @@
-discoverlands.controller('userCtrl', function($routeParams, $scope, userFactory, concertFactory, artistFactory, socket){
+discoverlands.controller('userCtrl', function($routeParams, $scope, userFactory, concertFactory, artistFactory){
 
 	$scope.user;
 	$scope.artists;
