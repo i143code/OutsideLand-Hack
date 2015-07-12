@@ -38,7 +38,25 @@ discoverlands.controller('userCtrl', function($routeParams, $scope, userFactory,
 	$scope.likeArtist = function(artistLiked){
 		console.log('in liked artist')
 		userFactory.likeArtist($scope.user.facebook_id, artistLiked, function(updatedConcerts){
-			$scope.artists = updatedConcerts;
+			$scope.user = $routeParams.id;
+			concertFactory.retrieveArtists(function(retrievedArtists){
+				$scope.artists = retrievedArtists;
+				console.log($scope.artists);
+				for (var z = 0; z < $scope.artists.performances.length; z++) {
+					$scope.artists.performances[z].yturl = '<iframe width="560" height="315" src="https://www.youtube.com/embed/'+$scope.artists.performances[z].stage+'" frameborder="0" allowfullscreen></iframe>';
+				}
+				userFactory.getUser($scope.user, function(retrievedUser){
+					$scope.user = retrievedUser;
+					for (var i = 0; i < $scope.artists.performances.length; i++) {
+						for (var j = 0; j < $scope.user.artists_liked.length; j++) {
+							if ($scope.artists.performances[i].artist === $scope.user.artists_liked[j]){
+								$scope.user.artists_liked[j] = $scope.artists.performances[i];
+							}
+						}
+					}
+					$scope.user.performances = $scope.user.artists_liked
+				})
+			})
 		})
 	}
 
@@ -54,6 +72,9 @@ discoverlands.controller('userCtrl', function($routeParams, $scope, userFactory,
 	concertFactory.retrieveArtists(function(retrievedArtists){
 		$scope.artists = retrievedArtists;
 		console.log($scope.artists);
+		for (var z = 0; z < $scope.artists.performances.length; z++) {
+			$scope.artists.performances[z].yturl = '<iframe width="560" height="315" src="https://www.youtube.com/embed/'+$scope.artists.performances[z].stage+'" frameborder="0" allowfullscreen></iframe>';
+		}
 		userFactory.getUser($scope.user, function(retrievedUser){
 			$scope.user = retrievedUser;
 			for (var i = 0; i < $scope.artists.performances.length; i++) {
@@ -148,5 +169,7 @@ discoverlands.controller('userCtrl', function($routeParams, $scope, userFactory,
 		console.log(data)
 		Materialize.toast(data.artist+': '+data.message, 4000)
 	})
+
+
 
 })

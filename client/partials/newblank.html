@@ -1,6 +1,6 @@
  	  <nav>
 	    <div class="nav-wrapper blue darken-4">
-	      <a href="#" class="brand-logo"> DiscoveryLands</a>
+	      <a href="#" class="brand-logo"><img src='images/logo.png' /> Discover Music</a>
 	      <ul id="nav-mobile" class="right hide-on-med-and-down">
 	        <li><a href="collapsible.html">Log Out</a></li>
 	      </ul>
@@ -8,9 +8,9 @@
 	  </nav>
 
 <div class="row" ng-hide='showWeather' ng-controller='userCtrl'>
-      <div class="col s12 m5">
+      <div class="col s3">
         <div class="card-panel blue lighten-2">
-          <h5 class='white-text'>Weather Forecast</h5>
+          <h5 class='white-text'><img src='images/cloud.png' width='32' height='32' />Weather Forecast</h5>
           <span class="white-text">
             <ul>
               <li>Cloud Coverage: {{weatherData.trip.cloud_cover.cond}}<br /></li>
@@ -49,14 +49,36 @@
 	<div class="row" ng-repeat='performance in artists.performances | filter: day_filter'>
       <div class="col s12">
         <div class="card-panel white">
-        	<h3>{{performance.artist}}</h3>
+        	<h3><a href='#/singleartist/{{performance.artist}}'>{{performance.artist}}</a></h3>
         	<a class="btn-floating btn-large waves-effect waves-light red right" ng-click='likeArtist(performance.artist)'><i class="material-icons">thumb_up</i></a><span class='right likeCount'>{{performance.likes}}</span>
-        	<img src='http://www.webtechelp.net/wp-content/uploads/2014/05/YouTube-Player-PSD-Download.png' />
-        	<br />
-          <span>I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
-          </span>
+          <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/Gupjrl5ZSX0" frameborder="0" allowfullscreen></iframe> -->
+          <span ng-bind-html='performance.yturl'></span>
+
         </div>
       </div>
     </div>
 </div>
+
+<footer class="page-footer blue">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Discover Music</h5>
+                <p class="grey-text text-lighten-4">Make the most of your concert and festival experience.  See the artists you want, including the ones you haven't discovered!</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Team</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="mailto:">Ashish Ranjan</a></li>
+                  <li><a class="grey-text text-lighten-3" href='mailto:srflafazan@gmail.com'>Shain Lafazan</a></li>
+                  <li><a class="grey-text text-lighten-3" href="mailto:johnhalbert@gmail.com">John Halbert</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2015 Discover Music
+            </div>
+          </div>
+        </footer>
