@@ -35,9 +35,10 @@ discoverlands.controller('userCtrl', function($routeParams, $scope, userFactory,
 		})
 	}
 
-	$scope.likeArtist = function(){
-		userFactory.likeArtist($routeParams.userid, $scope.artistLiked, function(updatedUser){
-			$scope.user = updatedUser;
+	$scope.likeArtist = function(artistLiked){
+		console.log('in liked artist')
+		userFactory.likeArtist($scope.user.facebook_id, artistLiked, function(updatedConcerts){
+			$scope.artists = updatedConcerts;
 		})
 	}
 
@@ -50,9 +51,11 @@ discoverlands.controller('userCtrl', function($routeParams, $scope, userFactory,
 	userFactory.setUser($routeParams.id);
 
 	$scope.user = $routeParams.id;
+	console.log($scope.user);
 
-	userFactory.getUser(function(retrievedUser){
+	userFactory.getUser($scope.user, function(retrievedUser){
 		$scope.user = retrievedUser;
+		console.log($scope.user);
 	})
 
 	concertFactory.retrieveArtists(function(retrievedArtists){

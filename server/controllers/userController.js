@@ -2,13 +2,15 @@ var mongoose = require('mongoose');
 
 var User = mongoose.model('User');
 var Artist = mongoose.model('Artist');
+var Concert = mongoose.model('Concert');
 
 module.exports = {
 	retrieveSingleUser: function(req, res){
-		User.findOne({_id: req.params.userid}, function(err, user){
+		User.findOne({facebook_id: req.params.userid}, function(err, user){
 			if (err) {
 				console.log('Error retrieving user information', err);
 			} else {
+				console.log(user);
 				res.json(user);
 			}
 		})
@@ -109,24 +111,60 @@ module.exports = {
 		})
 	},
 	likeArtist: function(req, res){
-		User.findOne({_id: req.params.userid}, function(err, user){
+		console.log('4');
+		User.findOne({facebook_id: req.params.userid}, function(err, user){
 			if (err) {
 				console.log('Error liking artist (1)', err);
 			} else {
-				Artist.findOne({_id: req.body.artist_id}, function(err, artist){
-					if (err) {
-						console.log('Error liking artist (2)', err);
-					} else {
-						user.artists_liked.push(artist._id);
-						user.save(function(err, user){
-							if (err) {
-								console.log('Error liking artist (3)');
-							} else {
-								res.json(user);
-							}
-						})
+				console.log('3');
+				console.log(user);
+				console.log(req.body.artist);
+				var search = { found: false };
+				for (var i = 0; i < user.artists_liked.length; i++) {
+					if (user.artists_liked[i] === req.body.artist) {
+						search.found = true;
 					}
-				})
+				}
+				if (!search.found){
+					console.log(req.body.artist);
+					user.artists_liked.push(req.body.artist);
+					user.save(function(err, user){
+						if (err) {
+							console.log('Error liking artist (2)', err);
+						} else {
+							console.log('1');
+							Concert.findOne({name: 'outsidelands'}, function(err, concert){
+								if (err) {
+									console.log('Error liking artist (3)', err);
+								} else {
+									console.log('2');
+									for (var j = 0; j < concert.performances.length; j++){
+										if (concert.performances[j].artist === req.body.artist) {
+											concert.performances[j].likes++;
+										}
+									}
+									concert.save(function(err, concert){
+										if (err) {
+											console.log('Error liking artist (4)', err);
+										} else {
+											console.log('you made it here');	
+											console.log(concert);
+											res.json(concert);
+										}
+									})
+								}
+							})
+						}
+					})
+				} else {
+					Concert.findOne({name: 'outsidelands'}, function(err, concert){
+						if (err) {
+							console.log('Error liking artist (5)', err);
+						} else {
+							res.json(concert);
+						}
+					})
+				}
 			}
 		})
 	},

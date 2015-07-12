@@ -41,7 +41,7 @@ discoverlands.factory('userFactory', function($http){
 	}
 
 	factory.likeArtist = function(userToRetrieve, artistLiked, callback){
-		$http.post('/users/'+userToRetrieve+'/artistliked/new')
+		$http.post('/users/'+userToRetrieve+'/artistliked/new', {artist: artistLiked})
 			.success(function(updatedUser){
 				callback(updatedUser);
 			})
@@ -52,8 +52,12 @@ discoverlands.factory('userFactory', function($http){
 		console.log(user);
 	}
 
-	factory.getUser = function(callback){
-		callback(user);
+	factory.getUser = function(userToGet, callback){
+		console.log(userToGet);
+		$http.get('/users/'+userToGet+'/show')
+			.success(function(retrievedUser){
+				callback(retrievedUser);
+			})
 	}
 
 	return factory;

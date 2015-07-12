@@ -12,7 +12,7 @@ discoverlands.config(function($routeProvider){
 		.when('/view', {
 			templateUrl: 'partials/view.html'
 		})
-		.when('/test', {
+		.when('/test/:id', {
 			templateUrl: 'partials/newblank.html'
 		})
 

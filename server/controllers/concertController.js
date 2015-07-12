@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+	var mongoose = require('mongoose');
 
 var Concert = mongoose.model('Concert');
 
@@ -13,6 +13,7 @@ module.exports = {
 		})
 	},
 	retrievePerformances: function(req, res){
+		console.log('You just got performances yo');
 		Concert.findOne({name: req.params.concertname})
 			.populate('artists')
 			.execute(function(err, performances){
