@@ -7,7 +7,7 @@ var ConcertSchema = new mongoose.Schema({
 	date: Date,
 	performances: [{
 		time: Date,
-		artist: { type: Schema.Types.ObjectId, ref: 'Artist' },
+		artists: { type: Schema.Types.ObjectId, ref: 'Artist' },
 		stage: String
 	}],
 	stages: [{ name: String, location: String}]

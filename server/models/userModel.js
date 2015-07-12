@@ -8,9 +8,10 @@ var UserSchema = new mongoose.Schema({
 	email: String,
 	password: String,
 	outside_land_username: String,
+	artists_liked: [{ type: Schema.Types.ObjectId, ref: 'Artist' }],
 	artist_list: [{
 		artist_name: String,
-		songs_heard: [{ name: String, time_heard: { type: Date, default: Date.now }, like: Boolean}],
+		songs_heard: [{ name: String, time_heard: { type: Date, default: Date.now }, like: { type: Boolean, default: false } }],
 	}],
 	created: { type: Date, default: Date.now }
 })

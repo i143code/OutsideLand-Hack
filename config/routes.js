@@ -34,6 +34,10 @@ module.exports = function(app) {
 		UserController.likeSong(req, res);		
 	});
 
+	app.post('/users/:userid/artistliked/new', function(req, res){
+		UserController.likeArtist(req, res);
+	});
+
 	// Artist-specific routes
 	app.get('/artists/:artistid/show', function(req, res){
 		ArtistController.retrieveArtist(req, res);
@@ -54,6 +58,10 @@ module.exports = function(app) {
 	app.post('/artists/:artistid/heard/new', function(req, res){
 		ArtistController.addHeard(req, res);
 	});
+
+	app.get('/artists/trending', function(req, res){
+		ArtistController.retrieveTrending(req, res);
+	})
 
 
 }
