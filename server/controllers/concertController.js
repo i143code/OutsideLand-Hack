@@ -4,10 +4,15 @@ var Concert = mongoose.model('Concert');
 
 module.exports = {
 	retrieveArtists: function(req, res){
-		Concert.findOne({name: req.params.concertname}, function(err, concert){
+
+		console.log(req.params.concertname);
+		
+		Concert.findOne({name: req.params.concertname }, function(err, concert){
 			if (err) {
 				console.log('Error retrieving artists');
 			} else {
+				console.log(concert);
+
 				res.json(concert);
 			}
 		})
@@ -27,6 +32,7 @@ module.exports = {
 				if (err) {
 					console.log('Error retrieving performance list', err);
 				} else {
+
 					res.json(performances);
 				}
 			})

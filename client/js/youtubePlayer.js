@@ -10,10 +10,9 @@
           videoIsSet = video;
           // console.log($(this).attr('videoId'));
 
-
             player = new YT.Player('player', {
-              height: '390',
-              width: '640',
+              height: '390', // default is 390
+              width: '640', // default is 640
               videoId: video,
               events: {
                 'onReady': onPlayerReady,
@@ -62,7 +61,7 @@
 
       function onPlayerStateChange(event) {
         if (event.data == YT.PlayerState.PLAYING && !done) {
-          setTimeout(stopVideo, 6000);
+          // setTimeout(stopVideo, 6000);
           done = true;
         }
       }

@@ -17,7 +17,6 @@
    	<script src='js/factories/concertFactory.js'></script>
    	<script src='js/controllers/concertCtrl.js'></script>
 
-
 <!-- JQUERY UI -->
 	<!-- <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css"> -->
 	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script> -->
@@ -29,8 +28,8 @@
 <!-- ADDITIONAL SCRIPTS -->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-    <script src='./js/youtubePlayer.js'></script>
-    <script src='./js/youtubeThumbnails.js'></script>
+	<script src='./js/youtubePlayer.js'></script>
+
     <script type="text/javascript" src="https://apis.google.com/js/client.js?onload=init"></script>
 
 </head>
@@ -42,14 +41,15 @@
 	</nav>
 </head>
 <body ng-app='discoverlands'>
-	<div class='container'>
-		
-		
-		<div id="youtubeSearchResults"></div>
-    	<div id="results"></div>
-	    <div id="player"></div>
+	<div ng-controller='concertCtrl'>
 
-		<div ng-view=''></div>
+		<div class='container'>
+			
+			<div id="youtubeSearchResults"></div>
+		    <div id="player"></div>
+
+			<div ng-view=''></div>
+		</div>
 
 	</div>
 </body>
