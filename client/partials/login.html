@@ -1,0 +1,102 @@
+
+
+<script>
+
+$(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
+
+</script>
+
+<script type="text/javascript">
+var vid = document.getElementById("bgvid");
+var pauseButton = document.querySelector("#polina button");
+
+function vidFade() {
+  vid.classList.add("stopfade");
+}
+
+vid.addEventListener('ended', function()
+{
+// only functional if "loop" is removed 
+vid.pause();
+// to capture IE10
+vidFade();
+}); 
+
+
+pauseButton.addEventListener("click", function() {
+  vid.classList.toggle("stopfade");
+  if (vid.paused) {
+    vid.play();
+    pauseButton.innerHTML = "Pause";
+  } else {
+    vid.pause();
+    pauseButton.innerHTML = "Paused";
+  }
+})
+
+
+</script>
+
+
+
+
+
+<video autoplay  poster="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/polina.jpg" id="bgvid" loop>
+  <!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
+<source src="//demosthenes.info/assets/videos/polina.webm" type="video/webm">
+<source src="//demosthenes.info/assets/videos/polina.mp4" type="video/mp4">
+</video>
+<div id="polina">
+<h1>Discover Artists</h1>
+
+<p>Discover new artists, connect with friends, enhance your concert experience</p>
+
+<a class="modal-trigger waves-effect waves-light btn" href='#modal1'>Sign In</a>
+<a href="/auth/facebook" class="waves-effect waves-light btn blue darken-3">Sign Up With Facebook</a>
+</div>
+
+
+
+  <div id="modal1" class="modal modal-fixed-footer" ng-controller='userCtrl'>
+    <div class="modal-content">
+      <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="first_name" type="text" class="validate" ng-model='newUser.first_name'>
+          <label for="first_name">First Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="last_name" type="text" class="validate" ng-model='newUser.last_name'>
+          <label for="last_name">Last Name</label>
+        </div>
+      </div>
+      
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="email" type="email" class="validate" ng-model='newUser.email'>
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="password" type="password" class="validate" ng-model='newUser.password'>
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="password" type="password" class="validate">
+          <label for="confirm password">Confirm Password</label>
+        </div>
+      </div>
+       <button class="waves-effect waves-light btn" ng-click=''>Sign Up</button>
+    </form>
+  </div>
+    </div>
+    
+ 
