@@ -18,5 +18,8 @@ discoverlands.config(function($routeProvider){
 		.when('/artist/:id', {
 			templateUrl: 'partials/artistbackend.html'
 		})
+		.otherwise({
+			redirectTo: '/login'
+		})
 
 })
