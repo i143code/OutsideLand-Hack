@@ -1,4 +1,4 @@
-discoverlands.controller('userCtrl', function($routeParams, $scope, userFactory, concertFactory, artistFactory){
+discoverlands.controller('userCtrl', function($routeParams, $scope, userFactory, concertFactory, artistFactory, socket){
 
 	$scope.user;
 	$scope.artists;
@@ -139,7 +139,13 @@ discoverlands.controller('userCtrl', function($routeParams, $scope, userFactory,
 	})
 
 	$scope.sendArtistMessage = function(){
-		socket.emit('new_artist_message', {message: $scope.newArtistMessage});
+		console.log($scope.newArtistMessage);
+		socket.emit('new_artist_message', {artist: $scope.artist.name, message: $scope.newArtistMessage});
 	}
+
+	socket.on('artist_message', function(data){
+		console.log(data)
+		Materialize.toast(data.artist+': '+data.message, 4000)
+	})
 
 })

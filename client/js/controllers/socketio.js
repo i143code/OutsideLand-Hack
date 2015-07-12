@@ -1,4 +1,4 @@
-discoverylands.factory('socket', function ($rootScope) {
+discoverlands.factory('socket', function ($rootScope) {
   var socket = io.connect();
   return {
     on: function (eventName, callback) {
@@ -22,5 +22,4 @@ discoverylands.factory('socket', function ($rootScope) {
     },
     sock: socket
   };
-  // return socket;
 });

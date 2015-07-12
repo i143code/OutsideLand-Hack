@@ -6,6 +6,10 @@ module.exports = function(server) {
 		
 		console.log('New Socket Connection: ', socket.id);
 
+		socket.on('new_artist_message', function(data){
+			socket.broadcast.emit('artist_message', data);
+		})
+
 	})
 
 }
