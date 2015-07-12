@@ -4,11 +4,12 @@ var Schema = mongoose.Schema;
 
 var ConcertSchema = new mongoose.Schema({
 	name: String,
-	date: Date,
+	date: String,
 	performances: [{
-		time: Date,
-		artist: { type: Schema.Types.ObjectId, ref: 'Artist' },
-		stage: String
+		time: String,
+		artist: String,
+		stage: String,
+		likes: { type: Number, default: 0 }
 	}],
 	stages: [{ name: String, location: String}]
 });

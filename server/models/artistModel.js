@@ -7,9 +7,7 @@ var ArtistSchema = new mongoose.Schema({
 	email: String,
 	password: String,
 	genre: String,
-	likes: Number,
-	users_attending: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-	songs_heard: [{ song: String, time_heard: { type: Date, default: Date.now }, _user: { type: Schema.ObjectId, ref: 'User'} }]
+	likes: { type: Number, default: 0 },
 });
 
 var Artist = mongoose.model('Artist', ArtistSchema);
