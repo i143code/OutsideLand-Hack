@@ -1,4 +1,4 @@
-module.exports = function(server){
+module.exports = function(server) {
 
 	var io = require('socket.io').listen(server);
 

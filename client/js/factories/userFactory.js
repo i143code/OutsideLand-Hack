@@ -67,6 +67,13 @@ discoverlands.factory('userFactory', function($http){
 			})
 	}
 
+	factory.retrieveAllUsers = function(callback){
+		$http.get('/users/show')
+			.success(function(allUsers){
+				callback(allUsers);
+			})
+	}
+
 	return factory;
 
 })

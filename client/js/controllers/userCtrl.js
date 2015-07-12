@@ -1,4 +1,4 @@
-discoverlands.controller('userCtrl', function($routeParams, $scope, userFactory, concertFactory, artistFactory){
+discoverlands.controller('userCtrl', function($routeParams, $scope, userFactory, concertFactory, artistFactory, socket){
 
 	$scope.user;
 	$scope.artists;
@@ -120,6 +120,26 @@ discoverlands.controller('userCtrl', function($routeParams, $scope, userFactory,
 
 	$scope.displayWeather = function(){
 		$scope.showWeather = false;
+	}
+
+	$scope.artist = {};
+	$scope.artist.name = 'WILCO';
+
+	$scope.usersWhoLike = [];
+
+	userFactory.retrieveAllUsers(function(allUsers){
+		for (var i = 0; i < allUsers.length; i++) {
+			for (var j = 0; j < allUsers[i].artists_liked.length; j++) {
+				if (allUsers[i].artists_liked[j] === $scope.artist.name) {
+					$scope.usersWhoLike.push(allUsers[i].first_name+" "+allUsers[i].last_name);
+				}
+			}
+		}
+		console.log($scope.usersWhoLike);
+	})
+
+	$scope.sendArtistMessage = function(){
+		socket.emit('new_artist_message', {message: $scope.newArtistMessage});
 	}
 
 })

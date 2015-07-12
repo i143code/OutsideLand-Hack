@@ -195,5 +195,14 @@ module.exports = {
 			}
 		})
 		
+	},
+	retrieveUsers: function(req, res){
+		User.find({}, function(err, users){
+			if (err) {
+				console.log('Error retrieving user list', err);
+			} else {
+				res.json(users);
+			}
+		})
 	}
 }

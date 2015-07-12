@@ -80,6 +80,10 @@ module.exports = function(app) {
 		UserController.likeArtist(req, res);
 	});
 
+	app.get('/users/show', function(req, res){
+		UserController.retrieveUsers(req, res);
+	})
+
 	// Artist-specific routes
 	app.get('/artists/:artistid/show', function(req, res){
 		ArtistController.retrieveArtist(req, res);

@@ -15,5 +15,8 @@ discoverlands.config(function($routeProvider){
 		.when('/test/:id', {
 			templateUrl: 'partials/newblank.html'
 		})
+		.when('/artist/:id', {
+			templateUrl: 'partials/artistbackend.html'
+		})
 
 })
