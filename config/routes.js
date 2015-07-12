@@ -2,8 +2,43 @@ var UserController = require('../server/controllers/userController');
 var ArtistController = require('../server/controllers/artistController');
 var ConcertController = require('../server/controllers/concertController');
 
+var passport = require('passport'), FacebookStrategy = require('passport-facebook').Strategy;
+
+passport.serializeUser(function(user, done) {
+	done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+	done(null, obj);
+});
+
+passport.use(new FacebookStrategy({
+	clientID: '1673236122905259',
+	clientSecret: '0540bcd3ad076073b99f9fee1c679703',
+	callbackURL: 'http://localhost:8000/auth/facebook/callback'
+},
+function(accessToken, refreshToken, profile, done){
+	console.log('accessToken: ', accessToken);
+	console.log('refreshToken: ', refreshToken);
+	console.log('done: ', done);
+	console.log('profile: ', profile);
+	process.nextTick(function() {
+		return done(null, profile);
+	});
+}
+
+))
+
+
+
 module.exports = function(app) {
 	
+	// Login
+
+	app.get('/auth/facebook', passport.authenticate('facebook'));
+
+	app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/#/success', failureRedirect: '/#/failure'}))
+
 	// Concert-specfic routes
 	app.get('/concerts/:concertname/artists/show', function(req, res){
 		ConcertController.retrieveArtists(req, res);
@@ -12,6 +47,10 @@ module.exports = function(app) {
 	app.get('/concerts/:concertname/performances/show', function(req, res){
 		ConcertController.retrievePerformances(req, res);
 	});
+
+	app.post('/concerts/:concertname/:artistname/like', function(req, res){
+		ConcertController.likeArtist(req, res);
+	})
 
 	// User-specific routes
 	app.get('/users/:userid/show', function(req, res){

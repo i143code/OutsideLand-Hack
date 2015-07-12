@@ -22,5 +22,25 @@ module.exports = {
 					res.json(performances);
 				}
 			})
+	},
+	likeArtist: function(req, res){
+		Concert.findOne({name: req.params.concertname}, function(err, concert){
+			if (err) {
+				console.log('Error liking artist (1)', err);
+			} else {
+				for (var i = 0; i < concert.performances.length; i++) {
+					if (concert.performances[i].artist === req.params.artistname) {
+						concert.performances[i].likes++;
+					}
+				}
+				concert.save(function(err, updatedConcert){
+					if (err) {
+						console.log('Error liking artist (2)', err);
+					} else {
+						res.json(updatedConcert);
+					}
+				})
+			}
+		})
 	}
 }

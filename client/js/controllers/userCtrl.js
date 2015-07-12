@@ -1,10 +1,13 @@
-discoverlands.controller('userCtrl', function($routeParams, $scope, userFactory){
+discoverlands.controller('userCtrl', function($routeParams, $scope, userFactory, concertFactory, artistFactory){
 
 	$scope.user;
+	$scope.artists;
 
 	$scope.createUser = function(){
+		console.log('Creating user...');
 		userFactory.createUser($scope.newUser, function(userCreated){
 			$scope.user = userCreated;
+			console.log('user created!');
 		})
 	}
 
@@ -38,8 +41,19 @@ discoverlands.controller('userCtrl', function($routeParams, $scope, userFactory)
 		})
 	}
 
+	$scope.concertArtistLike = function(concertName, artistName){
+		concertFactory.likeArtist(concertName, artistName, function(updatedArtists){
+			$scope.artists = updatedArtists;
+		})
+	}
+
 	userFactory.getUser(function(retrievedUser){
 		$scope.user = retrievedUser;
+	})
+
+	concertFactory.retrieveArtists(function(retrievedArtists){
+		$scope.artists = retrievedArtists;
+		console.log($scope.artists);
 	})
 
 })
