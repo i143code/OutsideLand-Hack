@@ -9,8 +9,8 @@ discoverlands.config(function($routeProvider){
 		.when('/view', {
 			templateUrl: 'partials/view.html'
 		})
-		.when('/somethingelse', {
-			templateUrl: 'partials/somethingelse.html'
+		.when('/test', {
+			templateUrl: 'partials/newblank.html'
 		})
 		.otherwise({
 			redirectTo: '/'
