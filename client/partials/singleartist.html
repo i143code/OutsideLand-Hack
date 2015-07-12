@@ -31,7 +31,14 @@
 	<div class="row">
       <div class="col s12">
         <div class="card-panel white">
-        	<h3>{{singleArtist.artist}}</h3>
+          <img src='{{gracenote[0].artist_image_url}}' />
+        	<h3>{{gracenote[0].album_artist_name}}</h3>
+          <h4>{{gracenote[0].album_title}}</h4>
+          <h4>{{gracenote[0].album_year}}</h4>
+          <a href="{{gracenote[0].artist_bio_url}}">Artist Bio</a>
+            <ul>
+              <li ng-repeat='track in gracenote[0].tracks' ng-bind='track.track_title'></li>
+            </ul>
         	<a class="btn-floating btn-large waves-effect waves-light red right" ng-click='likeArtist(singleArtist.artist)'><i class="material-icons">thumb_up</i></a><span class='right likeCount'>{{singleArtist.likes}}</span>
         	<br />
           

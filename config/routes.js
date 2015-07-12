@@ -28,10 +28,64 @@ passport.use(new FacebookStrategy({
 
 ))
 
+// 1336320-8E364BB99A28D4DF85903C40676BC1F7
+
+var Gracenote = require("node-gracenote");
+var gracenoteClientId = "1336320";
+var gracenoteClientTag = "8E364BB99A28D4DF85903C40676BC1F7";
+var userId = null;
+var api = new Gracenote(gracenoteClientId,gracenoteClientTag,userId);
+api.register(function (err, uid) {
+    userId = uid;
+});
+
+
+// 1336320-8E364BB99A28D4DF85903C40676BC1F7
+
+
+
 console.log(passport.session);
 
 module.exports = function(app) {
 	
+	app.post('/gracenote', function (req, res){
+		// console.log(gracenoteClientId, ' ', gracenoteClientTag, ' ', userId);
+
+		var api = new Gracenote(gracenoteClientId, gracenoteClientTag, userId);
+
+		// api.register(function (err, uid) {
+		//     userId = uid;
+		// });
+
+    	var artistName = "";
+    	console.log('req.body.artistName: ', req.body);
+		var result = api.searchAlbum(req.body.artistName, "*", function (err, results) {
+			if (err) {
+				console.log(err)
+			} else {
+		    console.log('results:', results);
+		    // console.log(results[0].album_artist_name);
+
+		    // var albumTitles = [];
+
+		    // for ( var i = 0 ; i < results.length; i++){
+		    // 	albumTitles.push(results[i].album_title);
+		    // }
+
+		    // console.log(albumTitles);
+
+		    // artistResponse = {};
+
+		    // artistResponse.artist = results[0].album_artist_name;
+		    // artistResponse.albums = albumTitles;
+		    // artistResponse.albums = results[0].artist_image_url;
+		    // artistResponse.albums = results[0].artist_bio_url;
+		    // artistResponse.albums = results[0].review_url;
+		    res.json(results);
+		}
+		});
+	});
+
 	// Login
 
 	app.get('/auth/facebook', passport.authenticate('facebook'));

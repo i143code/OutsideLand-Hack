@@ -170,6 +170,16 @@ discoverlands.controller('userCtrl', function($routeParams, $scope, userFactory,
 		Materialize.toast(data.artist+': '+data.message, 4000)
 	})
 
+	$scope.gracenote;
+
+	// $scope.getGracenote = function(){
+		userFactory.getGracenote($routeParams.name, function(graceNoteData){
+			console.log('here');
+			$scope.gracenote = graceNoteData;
+			console.log($scope.gracenote);
+		})
+	// }
+
 
 
 })

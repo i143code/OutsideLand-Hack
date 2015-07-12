@@ -74,6 +74,13 @@ discoverlands.factory('userFactory', function($http){
 			})
 	}
 
+	factory.getGracenote = function(artistName, callback){
+		$http.post('/gracenote', {artistName: artistName})
+			.success(function(graceNoteData){
+				callback(graceNoteData);
+			})
+	}
+
 	return factory;
 
 })
